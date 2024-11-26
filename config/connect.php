@@ -1,7 +1,7 @@
 <?php
 try {
     // Connection settings
-    $dsn = 'mysql:host=localhost;dbname=To-do List;charset=utf8';
+    $dsn = 'mysql:host=127.0.0.1;port=3306;dbname=To-do List;charset=utf8';
     $username = 'root';
     $password = '';
 
@@ -11,9 +11,8 @@ try {
     // Setting the error handling mode
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    echo "Connected successfully"; // To check that the connection is established
-} catch (PDOException $e) {
+} catch (PDOException $exception) {
     // Handling a connection error
-    die("Connection failed: " . $e->getMessage());
+    die("Connection failed: " . $exception->getMessage());
 }
 ?>
