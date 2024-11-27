@@ -1,10 +1,15 @@
 <?php 
     require_once 'config/connect.php';
     $task_id = $_GET['id'];
-    $stmt = $pdo->prepare("SELECT * FROM tasks WHERE `tasks`. `id` = :id ");
-    $stmt ->execute([
+    // Prepare an SQL statement to fetch the task with the specified ID
+    $stmt = $pdo->prepare("SELECT * FROM tasks WHERE `tasks`. `id` = :id");
+
+    // Execute the prepared statement and bind the task ID to the parameter `:id`
+    $stmt->execute([
         ':id' => $task_id,
     ]);
+
+    // Fetch the result as an associative array
     $task = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
