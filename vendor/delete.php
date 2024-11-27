@@ -3,7 +3,10 @@
     $task_id = $_GET['id'];
    
     // Request to delete an item in the database
-    mysqli_query($connect, "DELETE FROM tasks WHERE `tasks`.`id` = '$task_id' ");
+    $stmt = $pdo->prepare("DELETE FROM tasks WHERE `tasks`.`id` = :id ");
+    $stmt ->execute([
+        ':id' => $task_id,
+    ]);
 
     // Redirect to home
     header('Location: ../index.php');
